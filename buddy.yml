@@ -15,7 +15,6 @@
     execute_commands:
     - "pip install -r requirements.txt"
     - "ls -la"
-    - "sleep 5"
     - "python hello-world.py"
     - "echo \"The code is okay\""
     cached_dirs:
@@ -24,3 +23,10 @@
     - "/:/buddy/ci-demo"
     cache_base_image: true
     shell: "BASH"
+  - action: "Run Docker Image"
+    type: "RUN_DOCKER_CONTAINER"
+    docker_image_name: "alpine/flake8"
+    docker_image_tag: "latest"
+    mount_filesystem_disable: true
+    cache_base_image: true
+    shell: "SH"
