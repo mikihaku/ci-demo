@@ -30,3 +30,15 @@
     mount_filesystem_disable: true
     cache_base_image: true
     shell: "SH"
+  - action: "Execute: flake8 . --extend-exclude=dist,build --show-source --statistics"
+    type: "BUILD"
+    working_directory: "/buddy/ci-demo"
+    docker_image_name: "library/ubuntu"
+    docker_image_tag: "18.04"
+    execute_commands:
+    - "pip install -r requirements.txt"
+    - "flake8 . --extend-exclude=dist,build --show-source --statistics"
+    volume_mappings:
+    - "/:/buddy/ci-demo"
+    cache_base_image: true
+    shell: "BASH"
