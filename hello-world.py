@@ -3,6 +3,7 @@
 import os
 import time
 import ntplib
+import asyncio
 
 client = ntplib.NTPClient()
 response = client.request('pool.ntp.org')
